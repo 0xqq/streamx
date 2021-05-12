@@ -1621,6 +1621,8 @@ export default {
           theme: this.ideTheme()
         })
       }
+      this.$refs.mergely.theme()
+      this.$refs.different.theme()
     }
   },
 }

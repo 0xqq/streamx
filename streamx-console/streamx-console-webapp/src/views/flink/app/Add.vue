@@ -748,7 +748,6 @@ import Mergely from './Mergely'
 import configOptions from './Option'
 const Base64 = require('js-base64').Base64
 import SvgIcon from '@/components/SvgIcon'
-import { mapState } from 'vuex'
 
 import {
   initEditor,
@@ -904,10 +903,23 @@ export default {
   watch: {
     myTheme() {
       if (this.jobType === 'sql') {
-        this.controller.editor.flinkSql.updateOptions({
-          theme: this.ideTheme()
-        })
+        if (this.controller.editor.flinkSql) {
+          this.controller.editor.flinkSql.updateOptions({
+            theme: this.ideTheme()
+          })
+        }
+        if (this.controller.editor.bigScreen) {
+          this.controller.editor.bigScreen.updateOptions({
+            theme: this.ideTheme()
+          })
+        }
+        if (this.controller.editor.pom) {
+          this.controller.editor.pom.updateOptions({
+            theme: this.ideTheme()
+          })
+        }
       }
+      this.$refs.confEdit.theme()
     }
   },
 
